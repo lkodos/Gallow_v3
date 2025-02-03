@@ -9,13 +9,15 @@ import java.util.Random;
 
 public class WordService {
 
-    private static List<String> listOfWords;
+    private static List<String> listOfWords = new ArrayList<>();
 
     private static List<String> getListOfWordsFromFile() {
+
         try {
-            listOfWords = Files.readAllLines(Paths.get("singular_words.txt"));
+            listOfWords = Files.readAllLines(Paths.get("resources/words.txt"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("File not found");
+            System.exit(1);
         }
         return listOfWords;
     }
@@ -27,7 +29,8 @@ public class WordService {
         return listOfWords.get(randomIndex);
     }
 
-    public static List<String> getListFromString(String str) {
+    public static List<String> getListFromString() {
+        String str = getRandomWordFromList();
         List<String> list = new ArrayList<>();
         for (int i = 0; i < str.length(); i++) {
             list.add(str.charAt(i) + "");

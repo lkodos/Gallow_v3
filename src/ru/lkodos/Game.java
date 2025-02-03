@@ -1,11 +1,11 @@
 package ru.lkodos;
 
-import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
 
-    public static void startGame() throws IOException {
+    public static void startGame() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -26,7 +26,15 @@ public class Game {
     }
 
     private static void newGame() {
-        System.out.println("start new game");
-        System.out.println();
+
+        List<String> secretWord = WordService.getListFromString();
+        System.out.println(secretWord);
+
+
+
+
+
+
+
     }
 }
