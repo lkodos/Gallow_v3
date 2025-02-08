@@ -1,5 +1,6 @@
 package ru.lkodos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,8 +28,28 @@ public class Game {
 
     private static void newGame() {
 
+        List<String> currentSecretWord = new ArrayList<>();
+        int levelOfGallow = 0;
+        boolean isWin = false;
+
         List<String> secretWord = WordService.getListFromString();
-        System.out.println(secretWord);
+        currentSecretWord = secretWordToStars(secretWord);
+        showCurrentWord(secretWord);
+        showCurrentWord(currentSecretWord);
+        System.out.println();
+
+        while (levelOfGallow < Gallow.gallows.size()) {
+            if (secretWord.equals(currentSecretWord)) {
+                isWin = true;
+                break;
+            }
+        }
+
+        if (isWin) {
+            System.out.println("ПБЕДА!!!");
+        } else {
+            System.out.println("ВАМ КОНЕЦ");
+        }
 
 
 
@@ -36,5 +57,20 @@ public class Game {
 
 
 
+    }
+
+    private static List<String> secretWordToStars(List<String> secretWord) {
+        List<String> currentWordList = new ArrayList<>();
+        for (String letter : secretWord) {
+            currentWordList.add("*");
+        }
+        return currentWordList;
+    }
+
+    private static void showCurrentWord(List<String> currentWord) {
+        for (String letter : currentWord) {
+            System.out.print(letter.toUpperCase() + " ");
+        }
+        System.out.println();
     }
 }

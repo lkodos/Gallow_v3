@@ -14,7 +14,7 @@ public class WordService {
     private static List<String> getListOfWordsFromFile() {
 
         try {
-            listOfWords = Files.readAllLines(Paths.get("resources/words.txt"));
+            listOfWords = Files.readAllLines(Paths.get("resources/words1.txt"));
         } catch (IOException e) {
             System.out.println("File not found");
             System.exit(1);
