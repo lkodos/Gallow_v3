@@ -46,8 +46,6 @@ public class Game {
                 isWin = true;
                 break;
             }
-
-//            System.out.println("(" + secretWord + ")");
             System.out.print("Загадано слово: ");
             showCurrentWord(currentSecretWord);
             System.out.println();
