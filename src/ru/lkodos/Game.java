@@ -46,17 +46,16 @@ public class Game {
                 break;
             }
 
-            System.out.println("(" + secretWord + ")");
+//            System.out.println("(" + secretWord + ")");
             System.out.print("Загадано слово: ");
             showCurrentWord(currentSecretWord);
             System.out.println();
             System.out.println(Gallow.getGallow(levelOfGallow));
             System.out.println("Использованные буквы " + usedLetters);
             System.out.println("Введите букву: ");
-            System.out.println();
 
             while (true) {
-                letter = scanner.nextLine();
+                letter = scanner.nextLine().toLowerCase();
                 if (letter.isEmpty() || !correctLetters.contains(letter)) {
                     System.out.println("Некорректный ввод");
                     System.out.println("Введите букву: ");
@@ -70,7 +69,6 @@ public class Game {
 
             if (openLetterInSecretWord(letter, secretWord, currentSecretWord)) {
                 System.out.println("Есть такая буква в этом слове");
-                System.out.println(currentSecretWord);
                 System.out.println();
             }
             else {
@@ -85,6 +83,9 @@ public class Game {
         } else {
             System.out.println("ВАМ КОНЕЦ");
             System.out.println(Gallow.getGallow(levelOfGallow));
+            System.out.print("Было загадано слово: ");
+            showSecretWord(secretWord);
+            System.out.println();
         }
     }
 
@@ -109,6 +110,13 @@ public class Game {
 
     private static void showCurrentWord(List<String> currentWord) {
         for (String letter : currentWord) {
+            System.out.print(letter.toUpperCase() + " ");
+        }
+        System.out.println();
+    }
+
+    private static void showSecretWord(List<String> secretWord) {
+        for (String letter : secretWord) {
             System.out.print(letter.toUpperCase() + " ");
         }
         System.out.println();
