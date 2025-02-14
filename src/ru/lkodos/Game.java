@@ -55,7 +55,9 @@ public class Game {
 
             while (true) {
                 letter = scanner.nextLine();
-                if (alreadyBeen(usedLetters, letter)) {
+                if ( letter.isEmpty()) {
+                    System.out.println("Введите букву");
+                } else if (alreadyBeen(usedLetters, letter)) {
                     System.out.println("Такая буква уже была, повторите ввод");
                 } else {
                     usedLetters.add(letter);
