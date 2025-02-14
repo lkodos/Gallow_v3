@@ -34,6 +34,7 @@ public class Game {
         List<String> usedLetters = new ArrayList<>();
         List<String> correctLetters = fillCorrectLettersList();
         int levelOfGallow = 0;
+        int errorCounter = 0;
         boolean isWin = false;
         String letter;
 
@@ -51,6 +52,7 @@ public class Game {
             showCurrentWord(currentSecretWord);
             System.out.println();
             System.out.println(Gallow.getGallow(levelOfGallow));
+            System.out.println("Ошибок: " + errorCounter);
             System.out.println("Использованные буквы " + usedLetters);
             System.out.println("Введите букву: ");
 
@@ -73,6 +75,7 @@ public class Game {
             }
             else {
                 System.out.println("Такой буквы нет");
+                errorCounter++;
                 levelOfGallow++;
             }
         }
@@ -81,10 +84,11 @@ public class Game {
             System.out.println("ПБЕДА!!!");
             System.out.println();
         } else {
-            System.out.println("ВАМ КОНЕЦ");
             System.out.println(Gallow.getGallow(levelOfGallow));
+            System.out.println("ВАМ КОНЕЦ");
             System.out.print("Было загадано слово: ");
             showSecretWord(secretWord);
+            System.out.println("Количество ошибок: " + errorCounter);
             System.out.println();
         }
     }
