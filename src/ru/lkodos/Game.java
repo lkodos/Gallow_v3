@@ -3,6 +3,7 @@ package ru.lkodos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -29,7 +30,7 @@ public class Game {
 
     private static void newGame() {
 
-        List<String> currentSecretWord = new ArrayList<>();
+        List<String> currentSecretWord;
         List<String> usedLetters = new ArrayList<>();
         int levelOfGallow = 0;
         boolean isWin = false;
@@ -55,7 +56,10 @@ public class Game {
 
             while (true) {
                 letter = scanner.nextLine();
-                if (alreadyBeen(usedLetters, letter)) {
+                if ( letter.isEmpty()) {
+                    System.out.println("Некорректный ввод");
+                    System.out.println("Введите букву: ");
+                } else if (alreadyBeen(usedLetters, letter)) {
                     System.out.println("Такая буква уже была, повторите ввод");
                 } else {
                     usedLetters.add(letter);
@@ -99,11 +103,7 @@ public class Game {
     }
 
     private static List<String> secretWordToStars(List<String> secretWord) {
-        List<String> currentWordList = new ArrayList<>();
-        for (String letter : secretWord) {
-            currentWordList.add("*");
-        }
-        return currentWordList;
+        return secretWord.stream().map(letter -> "*").collect(Collectors.toList());
     }
 
     private static void showCurrentWord(List<String> currentWord) {
