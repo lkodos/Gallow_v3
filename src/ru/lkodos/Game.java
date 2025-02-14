@@ -32,6 +32,7 @@ public class Game {
 
         List<String> currentSecretWord;
         List<String> usedLetters = new ArrayList<>();
+        List<String> correctLetters = fillCorrectLettersList();
         int levelOfGallow = 0;
         boolean isWin = false;
         String letter;
@@ -56,7 +57,7 @@ public class Game {
 
             while (true) {
                 letter = scanner.nextLine();
-                if ( letter.isEmpty()) {
+                if (letter.isEmpty() || !correctLetters.contains(letter)) {
                     System.out.println("Некорректный ввод");
                     System.out.println("Введите букву: ");
                 } else if (alreadyBeen(usedLetters, letter)) {
@@ -111,5 +112,13 @@ public class Game {
             System.out.print(letter.toUpperCase() + " ");
         }
         System.out.println();
+    }
+
+    private static List<String> fillCorrectLettersList() {
+        List<String> correctLetters = new ArrayList<>();
+        for (char i = 'а'; i <= 'я'; i++) {
+            correctLetters.add(String.valueOf(i));
+        }
+        return correctLetters;
     }
 }
