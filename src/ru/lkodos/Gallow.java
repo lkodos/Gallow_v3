@@ -16,7 +16,6 @@ public class Gallow {
     }
 
     private static void setGallows() {
-        // levelOfGallow 0
         gallows.add("""
                   ########
                    #    |
@@ -26,7 +25,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 1
         gallows.add("""
                   ########
                    #    |
@@ -36,7 +34,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 2
         gallows.add("""
                   ########
                    #    |
@@ -46,7 +43,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 3
         gallows.add("""
                   ########
                    #    |
@@ -56,7 +52,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 4
         gallows.add("""
                   ########
                    #    |
@@ -66,7 +61,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 5
         gallows.add("""
                   ########
                    #    |
@@ -76,7 +70,6 @@ public class Gallow {
                    #
                  #####
                 """);
-        // levelOfGallow 6
         gallows.add("""
                   ########
                    #    |

@@ -32,6 +32,7 @@ public class Game {
 
         List<String> currentSecretWord;
         List<String> usedLetters = new ArrayList<>();
+        List<String> correctLetters = fillCorrectLettersList();
         int levelOfGallow = 0;
         boolean isWin = false;
         String letter;
@@ -45,18 +46,17 @@ public class Game {
                 break;
             }
 
-            System.out.println("(" + secretWord + ")");
+//            System.out.println("(" + secretWord + ")");
             System.out.print("Загадано слово: ");
             showCurrentWord(currentSecretWord);
             System.out.println();
             System.out.println(Gallow.getGallow(levelOfGallow));
             System.out.println("Использованные буквы " + usedLetters);
             System.out.println("Введите букву: ");
-            System.out.println();
 
             while (true) {
-                letter = scanner.nextLine();
-                if ( letter.isEmpty()) {
+                letter = scanner.nextLine().toLowerCase();
+                if (letter.isEmpty() || !correctLetters.contains(letter)) {
                     System.out.println("Некорректный ввод");
                     System.out.println("Введите букву: ");
                 } else if (alreadyBeen(usedLetters, letter)) {
@@ -69,7 +69,6 @@ public class Game {
 
             if (openLetterInSecretWord(letter, secretWord, currentSecretWord)) {
                 System.out.println("Есть такая буква в этом слове");
-                System.out.println(currentSecretWord);
                 System.out.println();
             }
             else {
@@ -84,6 +83,9 @@ public class Game {
         } else {
             System.out.println("ВАМ КОНЕЦ");
             System.out.println(Gallow.getGallow(levelOfGallow));
+            System.out.print("Было загадано слово: ");
+            showSecretWord(secretWord);
+            System.out.println();
         }
     }
 
@@ -111,5 +113,20 @@ public class Game {
             System.out.print(letter.toUpperCase() + " ");
         }
         System.out.println();
+    }
+
+    private static void showSecretWord(List<String> secretWord) {
+        for (String letter : secretWord) {
+            System.out.print(letter.toUpperCase() + " ");
+        }
+        System.out.println();
+    }
+
+    private static List<String> fillCorrectLettersList() {
+        List<String> correctLetters = new ArrayList<>();
+        for (char i = 'а'; i <= 'я'; i++) {
+            correctLetters.add(String.valueOf(i));
+        }
+        return correctLetters;
     }
 }
